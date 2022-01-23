@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_receipes/data/model/recipe.dart';
-import '../data/stub/recipe_stub.dart';
+import '../../data/stub/recipe_stub.dart';
+import '../detail/recipe_detail.dart';
 
 void main() {
   runApp(const RecipeApp());
@@ -52,7 +53,20 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView.builder(
           itemCount: recipeStubs.length,
           itemBuilder: (BuildContext context, int index) {
-            return buildRecipeCard(recipeStubs[index]);
+            // return buildRecipeCard(recipeStubs[index]);
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return RecipeDetail(recipeStubs[index]);
+                    },
+                  ),
+                );
+              },
+              child: buildRecipeCard(recipeStubs[index]),
+            );
           },
         ),
       ),

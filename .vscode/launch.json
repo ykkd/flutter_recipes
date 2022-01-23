@@ -8,7 +8,7 @@
             "name": "flutter_receipes",
             "request": "launch",
             "type": "dart",
-            "program": "lib/main/main.dart"
+            "program": "lib/presentation/main/main.dart"
         },
         {
             "name": "flutter_receipes (profile mode)",
