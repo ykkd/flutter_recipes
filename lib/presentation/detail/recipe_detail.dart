@@ -16,6 +16,7 @@ class RecipeDetail extends StatefulWidget {
 
 class _RecipeDetailState extends State {
   final Recipe recipe;
+  int _sliderVal = 1;
 
   _RecipeDetailState(this.recipe);
 
@@ -47,9 +48,23 @@ class _RecipeDetailState extends State {
                 itemBuilder: (BuildContext context, int index) {
                   final ingredient = recipe.ingredients[index];
                   return Text(
-                      "${ingredient.quantity} ${ingredient.measure} ${ingredient.name}");
+                      "${ingredient.quantity * _sliderVal} ${ingredient.measure} ${ingredient.name}");
                 },
               ),
+            ),
+            Slider(
+              min: 1,
+              max: 10,
+              divisions: 10,
+              label: "${_sliderVal * recipe.servings} servings",
+              value: _sliderVal.toDouble(),
+              onChanged: (newValue) {
+                setState(() {
+                  _sliderVal = newValue.round();
+                });
+              },
+              activeColor: Colors.green,
+              inactiveColor: Colors.black,
             ),
           ],
         ),
