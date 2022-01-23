@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_receipes/data/model/recipe.dart';
 import '../data/stub/recipe_stub.dart';
 
 void main() {
@@ -51,9 +52,20 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView.builder(
           itemCount: recipeStubs.length,
           itemBuilder: (BuildContext context, int index) {
-            return Text(recipeStubs[index].label);
+            return buildRecipeCard(recipeStubs[index]);
           },
         ),
+      ),
+    );
+  }
+
+  Widget buildRecipeCard(Recipe recipe) {
+    return Card(
+      child: Column(
+        children: <Widget>[
+          Image(image: AssetImage(recipe.imageUrl)),
+          Text(recipe.label),
+        ],
       ),
     );
   }
