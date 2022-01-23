@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../data/stub/recipe_stub.dart';
 
 void main() {
   runApp(const RecipeApp());
@@ -47,7 +48,12 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: SafeArea(
-        child: Container(),
+        child: ListView.builder(
+          itemCount: recipeStubs.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Text(recipeStubs[index].label);
+          },
+        ),
       ),
     );
   }
