@@ -1,3 +1,5 @@
+import '../model/ingredient.dart';
+
 /// Data model that represents a recipe
 class Recipe {
   /// recipe name
@@ -6,5 +8,8 @@ class Recipe {
   /// recipe image
   String imageUrl;
 
-  Recipe(this.label, this.imageUrl);
+  int servings;
+  List<Ingredient> ingredients;
+
+  Recipe(this.label, this.imageUrl, this.servings, this.ingredients);
 }
